@@ -7,7 +7,7 @@ export class TodoForm extends Component {
         title:'',
         description:''
     }
-
+    
     toggleFormState = () => {
         this.setState({
             toggleForm: !this.state.toggleForm
@@ -16,7 +16,7 @@ export class TodoForm extends Component {
 
     //here just need e.target.name.value, because e not just one input. 
     submitTodo = (e)  => {
-        fetch("http://localhost:4000/todos", {
+        fetch("http://localhost:3000/todos", {
             method:'POST',
             headers:{
                 'content-type':'application/json',
@@ -29,7 +29,6 @@ export class TodoForm extends Component {
         })
         .then(res => res.json())
         .then(console.log)
-
     }
 
     //Controlled Form
