@@ -1,14 +1,25 @@
 import React, { Component } from 'react'
+import {connect} from 'react-redux'
+import TodoCard from './TodoCard'
 
 export class TodoContainer extends Component {
     render() {
-        
+        const todosMapper = this.props?.todos?.todos.map(todo => {
+            return <TodoCard todo={todo} key={todo.id} />
+        })
         return (
             <div>
-                <h3>Here are the Todos</h3>
+                <h3>Here the Todos</h3>
+                {todosMapper}
             </div>
         )
     }
 }
 
-export default TodoContainer
+const mstp = (appState) => {
+    
+    return {
+        todos: appState.todos
+    }
+}
+export default connect(mstp)(TodoContainer)
