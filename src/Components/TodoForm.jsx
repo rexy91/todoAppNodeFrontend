@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import {Form, Button} from 'semantic-ui-react'
+import {connect} from 'react-redux'
 
 export class TodoForm extends Component {
     state={
@@ -68,4 +69,4 @@ export class TodoForm extends Component {
     }
 }
 
-export default TodoForm
+export default connect(null, {addOneTodo} )(TodoForm)
