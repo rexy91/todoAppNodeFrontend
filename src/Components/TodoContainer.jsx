@@ -4,7 +4,7 @@ import TodoCard from './TodoCard'
 
 export class TodoContainer extends Component {
     render() {
-        const todosMapper = this.props?.todos?.todos.map(todo => {
+        const todosMapper = this.props?.todos?.todos?.map(todo => {
             return <TodoCard todo={todo} key={todo.id} />
         })
         return (

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {Form, Button} from 'semantic-ui-react'
 import {connect} from 'react-redux'
+import { addOneTodo } from '../Redux/actions'
 
 export class TodoForm extends Component {
     state={
@@ -14,7 +15,6 @@ export class TodoForm extends Component {
             toggleForm: !this.state.toggleForm
         })
     }
-
     //here just need e.target.name.value, because e not just one input. 
     submitTodo = (e)  => {
         fetch("http://localhost:3000/todos", {
@@ -29,7 +29,9 @@ export class TodoForm extends Component {
             })
         })
         .then(res => res.json())
-        .then(console.log)
+        .then(newTodoObj => {
+            this.props.addOneTodo(newTodoObj)
+        })
     }
 
     //Controlled Form

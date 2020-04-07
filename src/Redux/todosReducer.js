@@ -9,7 +9,11 @@ case 'GET_ALL_TODOS':
     return {...state, todos:action.payload} 
 
 case 'ADD_ONE_TODO':
-    return {...state}
+                            // Spread the todos, add the new todo. 
+                            // It is an array, we can add without a key.
+                            // Spread action.payload.newTodo to get keys/values out of todo object. 
+    return {...state, todos:{todos:[...state.todos.todos, {...action.payload.newTodo}]}}
+
 default:
     return state;
 }
