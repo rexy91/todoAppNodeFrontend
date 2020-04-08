@@ -18,6 +18,9 @@ case 'DELETE_ONE_TODO':
     // const updatedArray = [{...state.todos.todos}]
     
     return {...state, todos:{todos:action.payload}}
+
+case 'RESET_APP_DATA':
+    return {...state, todos:{}}
     
 default:
     return state;

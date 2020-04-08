@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import {Form, Button} from 'semantic-ui-react'
 import {connect} from 'react-redux'
-import { addOneTodo } from '../Redux/actions'
+import { addOneTodo, resetAppData} from '../Redux/actions'
 
 export class TodoForm extends Component {
     state={
@@ -15,7 +15,7 @@ export class TodoForm extends Component {
             method:'DELETE'
         })
         .then(res => res.json())
-        .then(console.log)
+        .then(this.props.resetAppData())
     }
 
     toggleFormState = () => {
@@ -41,6 +41,7 @@ export class TodoForm extends Component {
         .then(newTodoObj => {
             this.props.addOneTodo(newTodoObj)
         })
+        e.target.title.value= ''
     }
 
     //Controlled Form
@@ -90,4 +91,4 @@ export class TodoForm extends Component {
     }
 }
 
-export default connect(null, {addOneTodo} )(TodoForm)
+export default connect(null, {addOneTodo, resetAppData} )(TodoForm)

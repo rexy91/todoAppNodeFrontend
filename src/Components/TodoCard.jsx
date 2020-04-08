@@ -10,10 +10,10 @@ export class TodoCard extends Component {
     
     changeCompletedStatus = () => {
         this.setState({
-
             toggleCompleted: !this.state.toggleCompleted
         })
     }
+    
     deleteTodo = () =>{
         fetch(`http://localhost:3000/todos/${this.props.todo._id}`, {
             method:'DELETE',

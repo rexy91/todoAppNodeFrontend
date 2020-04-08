@@ -19,3 +19,9 @@ export const deleteOneTodo = (updatedArray) => {
         payload: updatedArray
     }
 }
+
+export const resetAppData = () => {
+    return{
+        type: 'RESET_APP_DATA'
+    }
+}
