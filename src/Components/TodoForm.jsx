@@ -10,6 +10,14 @@ export class TodoForm extends Component {
         description:''
     }
 
+    resetAppData = () => {
+        fetch('http://localhost:3000/todos/resetdata', {
+            method:'DELETE'
+        })
+        .then(res => res.json())
+        .then(console.log)
+    }
+
     toggleFormState = () => {
         this.setState({
             toggleForm: !this.state.toggleForm
@@ -17,6 +25,7 @@ export class TodoForm extends Component {
     }
     //here just need e.target.name.value, because e not just one input. 
     submitTodo = (e)  => {
+        e.preventDefault();
         fetch("http://localhost:3000/todos", {
             method:'POST',
             headers:{
@@ -27,6 +36,7 @@ export class TodoForm extends Component {
                 title: e.target.title.value,
             })
         })
+
         .then(res => res.json())
         .then(newTodoObj => {
             this.props.addOneTodo(newTodoObj)
@@ -71,6 +81,7 @@ export class TodoForm extends Component {
                             </div>
                                 <div className="col-md-4 offset-md-1" style={{marginBottom:'10px'}}>
                                 <button type="submit" class="btn btn-primary"> Submit </button>
+                                <button onClick ={this.resetAppData} type="button" class="btn btn-danger"> Reset App </button>
                             </div>
                     </div>
                 </form>

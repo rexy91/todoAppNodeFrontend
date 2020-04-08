@@ -20,7 +20,6 @@ export class TodoCard extends Component {
         })
         .then(res => res.json())
         .then(() => {
-            console.log(this.props?.todos?.todos)
                                                     // The ones that doesn't match will be kept in new array. 
             const updatedArray = this.props?.todos?.todos?.filter(todo => todo._id != this.props?.todo?._id)
             this.props.deleteOneTodo(updatedArray)
@@ -32,7 +31,6 @@ export class TodoCard extends Component {
     }
 
     render() {
-        console.log(this.crossTodoItem())
 
         const {title} = this.props.todo
         return (
