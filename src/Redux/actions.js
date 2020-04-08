@@ -12,3 +12,10 @@ export const addOneTodo = (todoObj) => {
         payload: todoObj
     }
 }
+
+export const deleteOneTodo = (updatedArray) => {
+    return{
+        type: 'DELETE_ONE_TODO',
+        payload: updatedArray
+    }
+}

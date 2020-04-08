@@ -14,6 +14,11 @@ case 'ADD_ONE_TODO':
                             // Spread action.payload.newTodo to get keys/values out of todo object. 
     return {...state, todos:{todos:[...state.todos.todos, {...action.payload.newTodo}]}}
 
+case 'DELETE_ONE_TODO':
+    // const updatedArray = [{...state.todos.todos}]
+    
+    return {...state, todos:{todos:action.payload}}
+    
 default:
     return state;
 }

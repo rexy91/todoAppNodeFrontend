@@ -1,10 +1,26 @@
 import React, { Component } from 'react'
+import {connect} from 'react-redux'  
+import {deleteOneTodo} from '../Redux/actions'
 
 export class TodoCard extends Component {
+
+    
+    deleteTodo = () =>{
+        fetch(`http://localhost:3000/todos/${this.props.todo._id}`, {
+            method:'DELETE',
+        })
+        .then(res => res.json())
+        .then(() => {
+            console.log(this.props?.todos?.todos)
+                                                                // The ones that doesn't match will be kept in new array. 
+            const updatedArray = this.props?.todos?.todos?.filter(todo => todo._id != this.props?.todo?._id)
+            this.props.deleteOneTodo(updatedArray)
+        })
+    } 
+
     render() {
         const {title, description} = this.props.todo
         return (
-
             <div className = 'todoCard'>
                 <div className="container">
                         <div className="row">
@@ -13,7 +29,7 @@ export class TodoCard extends Component {
                                 <p> {description} </p>
                             </div>
                             <div className="col-md-4">
-                                <button type='button' className='btn btn-danger'> Delete </button>
+                                <button onClick = {this.deleteTodo}type='button' className='btn btn-danger'> Delete </button>
                             </div>
                         </div>
                 </div>
@@ -22,4 +38,8 @@ export class TodoCard extends Component {
     }
 }
 
-export default TodoCard
+const mstp = (appState) => {
+    return appState
+} 
+
+export default connect(mstp, {deleteOneTodo})(TodoCard)
