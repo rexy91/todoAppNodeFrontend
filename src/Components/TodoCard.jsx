@@ -24,10 +24,14 @@ export class TodoCard extends Component {
             <div className = 'todoCard'>
                 <div className="container">
                         <div className="row">
-                            <div className="col-md-6 offset-md-2 border">
+                            <div className='col-md-1'>    
+                            </div>
+                            
+                            <div className="col-md-5 offset-md-2 border">
                                 <h3> {title} </h3>
                             </div>
                             <div className="col-md-4">
+                                <button onClick = {this.deleteTodo}type='button' className='btn btn-success'> Complete </button>
                                 <button onClick = {this.deleteTodo}type='button' className='btn btn-danger'> Delete </button>
                             </div>
                         </div>

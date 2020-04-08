@@ -63,16 +63,17 @@ export class TodoForm extends Component {
             <div className = 'container'>
                 {/* <Button onClick = {this.toggleFormState}>Add a Todo</Button> */}
                 {/* {this.state.toggleForm? this.toggleForm() : null} */}
-                <div className="row">
-                    <form action="" onSubmit = {this.submitTodo}>
-                        <div className="col-md-5 offset-md-2">
-                                <input type="text" name = 'title' className = 'form-control' placeholder='add item'/>
-                        </div>
-                            <div className="col-md-4 offset-md-1" style={{marginBottom:'10px'}}>
-                            <button type="submit" class="btn btn-primary"> Submit </button>
-                        </div>
-                    </form>
-                </div>
+                <form action="" onSubmit = {this.submitTodo}>
+                    <div className="row">
+                        
+                            <div className="col-md-4 offset-md-3">
+                                    <input type="text" name = 'title' className = 'form-control' placeholder='add item'/>
+                            </div>
+                                <div className="col-md-4 offset-md-1" style={{marginBottom:'10px'}}>
+                                <button type="submit" class="btn btn-primary"> Submit </button>
+                            </div>
+                    </div>
+                </form>
             </div>
         )
     }
