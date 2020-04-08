@@ -4,7 +4,16 @@ import {deleteOneTodo} from '../Redux/actions'
 
 export class TodoCard extends Component {
 
+    state={
+        toggleCompleted: false
+    }
     
+    changeCompletedStatus = () => {
+        this.setState({
+
+            toggleCompleted: !this.state.toggleCompleted
+        })
+    }
     deleteTodo = () =>{
         fetch(`http://localhost:3000/todos/${this.props.todo._id}`, {
             method:'DELETE',
@@ -18,7 +27,13 @@ export class TodoCard extends Component {
         })
     } 
 
+    crossTodoItem = () => {
+        return this.state.toggleCompleted ? 'line-through red' : ''
+    }
+
     render() {
+        console.log(this.crossTodoItem())
+
         const {title} = this.props.todo
         return (
             <div className = 'todoCard'>
@@ -26,12 +41,12 @@ export class TodoCard extends Component {
                         <div className="row">
                             <div className='col-md-1'>    
                             </div>
-                            
+
                             <div className="col-md-5 offset-md-2 border">
-                                <h3> {title} </h3>
+                                <h3 style={{textDecoration:`${this.crossTodoItem()}`}}> {title} </h3>
                             </div>
                             <div className="col-md-4">
-                                <button onClick = {this.deleteTodo}type='button' className='btn btn-success'> Complete </button>
+                                <button onClick = {this.changeCompletedStatus} type='button' className='btn btn-success'> Complete </button>
                                 <button onClick = {this.deleteTodo}type='button' className='btn btn-danger'> Delete </button>
                             </div>
                         </div>
