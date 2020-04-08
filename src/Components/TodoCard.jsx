@@ -12,21 +12,20 @@ export class TodoCard extends Component {
         .then(res => res.json())
         .then(() => {
             console.log(this.props?.todos?.todos)
-                                                                // The ones that doesn't match will be kept in new array. 
+                                                    // The ones that doesn't match will be kept in new array. 
             const updatedArray = this.props?.todos?.todos?.filter(todo => todo._id != this.props?.todo?._id)
             this.props.deleteOneTodo(updatedArray)
         })
     } 
 
     render() {
-        const {title, description} = this.props.todo
+        const {title} = this.props.todo
         return (
             <div className = 'todoCard'>
                 <div className="container">
                         <div className="row">
-                            <div className="col-md-6 offset-md-2">
+                            <div className="col-md-6 offset-md-2 border">
                                 <h3> {title} </h3>
-                                <p> {description} </p>
                             </div>
                             <div className="col-md-4">
                                 <button onClick = {this.deleteTodo}type='button' className='btn btn-danger'> Delete </button>

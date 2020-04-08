@@ -9,7 +9,7 @@ export class TodoForm extends Component {
         title:'',
         description:''
     }
-    
+
     toggleFormState = () => {
         this.setState({
             toggleForm: !this.state.toggleForm
@@ -25,7 +25,6 @@ export class TodoForm extends Component {
             },
             body:JSON.stringify({
                 title: e.target.title.value,
-                description: e.target.description.value
             })
         })
         .then(res => res.json())
@@ -44,12 +43,12 @@ export class TodoForm extends Component {
     }
 
     toggleForm = () => {
-    return     <Form onSubmit = {this.submitTodo}>
+    return     <Form>
                     <Form.Field>
                         <label htmlFor=""> New Todo </label>
                         <br/>
                         <label htmlFor=""> Title </label>
-                        <input onChange={this.handleOnchange} type="text" name='title' value={this.state.title}/>
+                        <input className = 'form-control' onChange={this.handleOnchange} type="text" name='title' value={this.state.title}/>
                         <br/>
                         <label htmlFor=""> Description</label>
                         <textarea onChange={this.handleOnchange} name="description" id="" cols="3" rows="3" value={this.state.description} ></textarea>
@@ -57,15 +56,23 @@ export class TodoForm extends Component {
                         <Button>Submit</Button>
                     </Form.Field>
                 </Form>
-                
     }
 
     render() {
         return (
-            <div>
-                <Button onClick = {this.toggleFormState}>Add a Todo</Button>
-                {this.state.toggleForm? this.toggleForm() : null}
-                <br/>
+            <div className = 'container'>
+                {/* <Button onClick = {this.toggleFormState}>Add a Todo</Button> */}
+                {/* {this.state.toggleForm? this.toggleForm() : null} */}
+                <div className="row">
+                    <form action="" onSubmit = {this.submitTodo}>
+                        <div className="col-md-5 offset-md-2">
+                                <input type="text" name = 'title' className = 'form-control' placeholder='add item'/>
+                        </div>
+                            <div className="col-md-4 offset-md-1" style={{marginBottom:'10px'}}>
+                            <button type="submit" class="btn btn-primary"> Submit </button>
+                        </div>
+                    </form>
+                </div>
             </div>
         )
     }

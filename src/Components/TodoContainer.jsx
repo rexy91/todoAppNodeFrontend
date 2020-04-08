@@ -9,7 +9,6 @@ export class TodoContainer extends Component {
         })
         return (
             <div>
-                <h3>Here the Todos</h3>
                 {todosMapper}
             </div>
         )
