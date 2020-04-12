@@ -5,5 +5,5 @@ Backend can be found here: https://github.com/rexy91/todoAppNodeJsBackend
 
 In the project directory, you can run:
 
-## Clone the repo
+# Clone the repo
 ## run npm install && start
