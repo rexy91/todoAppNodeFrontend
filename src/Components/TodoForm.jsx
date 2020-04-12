@@ -25,8 +25,9 @@ export class TodoForm extends Component {
     }
     //here just need e.target.name.value, because e not just one input. 
     submitTodo = (e)  => {
+        const localURL = 'http://localhost:3000/todos'
         e.preventDefault();
-        fetch("http://localhost:3000/todos", {
+        fetch(`${localURL}`, {
             method:'POST',
             headers:{
                 'content-type':'application/json',
@@ -36,7 +37,6 @@ export class TodoForm extends Component {
                 title: e.target.title.value,
             })
         })
-
         .then(res => res.json())
         .then(newTodoObj => {
             this.props.addOneTodo(newTodoObj)

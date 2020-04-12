@@ -19,9 +19,9 @@ export class TodoCard extends Component {
             method:'DELETE',
         })
         .then(res => res.json())
-        .then(() => {
-                                                    // The ones that doesn't match will be kept in new array. 
+        .then(() => {                              
             const updatedArray = this.props?.todos?.todos?.filter(todo => todo._id != this.props?.todo?._id)
+            // Update states using Redux 
             this.props.deleteOneTodo(updatedArray)
         })
     } 
